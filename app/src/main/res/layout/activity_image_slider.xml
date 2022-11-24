@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_dark"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnClose"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_gravity="start"
+                        android:background="@drawable/close_v"
+                        android:padding="3dp"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnShare"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/ic_share"
+                        android:padding="10dp"
+                        android:textAllCaps="false"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="60dp"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toStartOf="@id/btnDelete"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnDelete"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="8dp"
+                        android:layout_gravity="end"
+                        android:background="@drawable/ic_delete_img"
+                        android:padding="10dp"
+                        android:textAllCaps="false"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </FrameLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:background="@color/failure">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/btnLeft"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp">
+
+                <include layout="@layout/item_image" />
+
+                <include layout="@layout/item_image" />
+
+                <include layout="@layout/item_image" />
+            </androidx.viewpager.widget.ViewPager>
+
+
+            <Button
+                android:id="@+id/btnLeft"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="@dimen/_50sdp"
+                android:background="@drawable/left_arrow_v"
+                android:padding="16dp"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/llCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btnLeft">
+
+                <TextView
+                    android:id="@+id/tvPageIndex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+                    android:id="@+id/tvPageDivider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/tvPageIndex"
+                    android:layout_weight="1"
+                    android:text="@string/divider"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+                    android:id="@+id/tvPageTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/tvPageDivider"
+                    android:layout_weight="1"
+                    android:text="100"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnRight"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_50sdp"
+                android:background="@drawable/right_arrow_v"
+                android:padding="16dp"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/grControllers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="btnLeft,llCounter,btnRight" />
+
+            <RelativeLayout
+                android:id="@+id/rlProgressBarLayout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/colorBlue"
+                android:visibility="visible"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:focusable="true">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:indeterminate="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlInternetNotAvailable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tvNoInternetAccess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_50sdp"
+                    android:layout_marginRight="@dimen/_50sdp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/no_internet_access" />
+
+                <Button
+                    android:id="@+id/btnRetry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvNoInternetAccess"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:text="@string/bt_retry"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9bc4e2</color>
+    <color name="colorPrimaryDark">#a9cde6</color>
+    <color name="colorBackground">#fff</color>
+    <color name="colorAccent">#BEBEBE</color>
+    <color name="colorDarker">#659ac0</color>
+    <color name="colorLighter">#FFF4D1</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="failure">#000000</color>
+    <color name="colorTransparent_grey">#BEBEBE</color>
+    <color name="colorTransparent">#C0C0C0</color>
+    <color name="colorBlackAlpha">#33000000</color>
+    <color name="colorBlue">#73007AFF</color>
+    <color name="colorWhiteAlpha">#BFffffff</color>
+    <color name="colorBlueShade">#3333ff</color>
+    <color name="colorFile">#828282</color>
+    <color name="colorSepiaGreen">#12e2c7</color>
+    <color name="colorDarkGrey">#7f7f7f</color>
+    <color name="colorText">#000000</color>
+    <color name="white">#ffffff</color>
+</resources>

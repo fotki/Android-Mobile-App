@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.activities.LoginActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/app_logo" />
+            <TextView
+                android:id="@+id/tvVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:text="1.12"
+                android:textSize="8sp" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:weightSum="2">
+
+        <EditText
+            android:id="@+id/etUserName"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_6sdp"
+            android:hint="@string/et_user_name_hint" />
+
+        <View
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_2sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="#909090" />
+
+        <EditText
+            android:id="@+id/etUserPassword"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:hint="@string/et_user_password_hint"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llInternetNotAvailable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/_50sdp"
+        android:layout_marginRight="@dimen/_50sdp"
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+        <TextView
+            android:id="@+id/tvNoInternetAccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_internet_access"
+            android:gravity="center_horizontal"
+            />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_gravity="center"
+            android:text="@string/bt_login_text"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <ImageView
+                android:id="@+id/btnLoginGoogle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_google"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:visibility="visible"/>
+
+            <ImageView
+                android:id="@+id/btnLoginFb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_fb"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:visibility="visible"/>
+
+
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btnSignInGoogle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/btnSignInFacebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_1_activity_media_preview_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.250" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_2_activity_media_preview_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_3_activity_media_preview_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_4_activity_media_preview_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="1" />
+
+    <com.zhihu.matisse.internal.ui.widget.PreviewViewPager
+        android:id="@+id/pager_c"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black" />
+
+    <TextView
+        android:id="@+id/button_back_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:foreground="?selectableItemBackground"
+        android:padding="16dp"
+        android:text="@string/button_back"
+        android:textColor="?attr/preview.bottomToolbar.back.textColor"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_4_activity_media_preview_c"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/button_apply_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:foreground="?selectableItemBackground"
+        android:padding="16dp"
+        android:textColor="?attr/preview.bottomToolbar.apply.textColor"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/size_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/preview_bottom_size"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/pager"
+        app:layout_constraintEnd_toStartOf="@+id/button_apply_c"
+        app:layout_constraintStart_toEndOf="@+id/button_back" />
+
+    <com.zhihu.matisse.internal.ui.widget.CheckRadioView
+        android:id="@+id/original_c"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_preview_radio_off"
+        android:tint="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2_c" />
+
+    <TextView
+        android:id="@+id/textView2_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:enabled="true"
+        android:paddingStart="4dp"
+        android:paddingLeft="4dp"
+        android:text="@string/button_original"
+        android:textColor="?attr/preview.bottomToolbar.back.textColor"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pager" />
+
+    <com.zhihu.matisse.internal.ui.widget.CheckView
+        android:id="@+id/check_view_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

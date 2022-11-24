@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutFolder_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_folder"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+
+    <ImageView
+        android:id="@+id/ic_Folder_item"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:src="@drawable/ic_folder"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/folderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="5dp"
+        android:background="@null"
+        android:maxLines="1"
+        android:padding="@dimen/_1sdp"
+        android:text="Folder name"
+        android:textSize="@dimen/_8sdp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/number_of_folders"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:text="0 Folders"
+        android:textSize="@dimen/_8sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/folderName" />
+
+    <TextView
+        android:id="@+id/number_of_albums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="2dp"
+        android:text="0 Albums"
+        android:textSize="@dimen/_8sdp"
+        app:layout_constraintStart_toEndOf="@+id/number_of_folders"
+        app:layout_constraintTop_toBottomOf="@+id/folderName" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/ic_Album_item"
+        fresco:placeholderImage="@drawable/ic_album"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutFolder_item" />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_Album_item"
+        app:layout_constraintEnd_toEndOf="@+id/ic_Album_item"
+        app:layout_constraintStart_toStartOf="@+id/ic_Album_item"
+        app:layout_constraintTop_toTopOf="@+id/ic_Album_item" />
+
+
+    <RelativeLayout
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_alignBottom="@+id/ic_Album_item"
+        android:background="@drawable/center_bar"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_Album_item"
+        app:layout_constraintEnd_toEndOf="@+id/ic_Album_item"
+        app:layout_constraintStart_toStartOf="@+id/ic_Album_item">
+
+        <TextView
+            android:id="@+id/album_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enable_background">Background upload</string>
+    <string name="upload_progress">Upload progress</string>
+    <string name="no_media_to_upload">No media to upload</string>
+    <string name="folders_upload">Upload from following folders</string>
+    <string name="none">None</string>
+    <string name="upload_destination">Upload destination</string>
+    <string name="cellular_mobile">Use cellular/mobile data to upload:</string>
+    <string name="upload_works">Upload works:</string>
+</resources>

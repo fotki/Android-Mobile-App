@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearlayout"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/share_media"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_13sdp"
+                android:gravity="center"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/sharetext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_12sdp"
+                android:text="@string/resize_share_photos_text"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_below="@+id/linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
+            <ListView
+                android:id="@+id/choiceDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+            </ListView>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

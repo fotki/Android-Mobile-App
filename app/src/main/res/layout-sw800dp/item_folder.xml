@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/linearLayoutFolder_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/ic_folder">
+        <ImageView
+            android:id="@+id/ic_Folder_item"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:visibility="gone"
+            android:src="@drawable/ic_folder" />
+
+        <TextView
+            android:id="@+id/folderName"
+            android:padding="@dimen/_1sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_2sdp"
+            android:background="@null"
+            android:textSize="@dimen/_8sdp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:text="Folder name"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/_2sdp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/number_of_folders"
+                android:textSize="@dimen/_8sdp"
+                android:text="0 Folders"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/number_of_albums"
+                android:textSize="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:text="0 Albums"/>
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rel_album_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/ic_Album_item"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            fresco:placeholderImage="@drawable/ic_album"
+            />
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_centerInParent="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textAlignment="center"/>
+        <RelativeLayout
+            android:layout_alignBottom="@+id/ic_Album_item"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/center_bar">
+            <TextView
+                android:id="@+id/album_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textSize="@dimen/_8sdp"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

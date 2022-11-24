@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/drawee_item"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        fresco:placeholderImage="@color/colorWhite"
+       />
+        <ImageView
+            android:id="@+id/imageView_Video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:src="@drawable/vid_play"/>
+        <ProgressBar
+            android:layout_centerInParent="true"
+            android:id="@+id/pbLoading"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textAlignment="center"/>
+
+        <RelativeLayout
+            android:id="@+id/item_layout"
+            android:layout_alignBottom="@+id/drawee_item"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:visibility="gone"
+            android:background="@drawable/center_bar">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</LinearLayout>

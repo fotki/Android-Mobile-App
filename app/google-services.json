@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "493517061617",
+    "firebase_url": "https://fotki-b2c58.firebaseio.com",
+    "project_id": "fotki-b2c58",
+    "storage_bucket": "fotki-b2c58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493517061617:android:d26d4307c20b32e7339850",
+        "android_client_info": {
+          "package_name": "com.fotki.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493517061617-k1nm1fbckp2p1u2a6v1q9ehad9euba8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB00SIHbjIPzmitNAm-Lj2OxS5pLJG9Sqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493517061617-k1nm1fbckp2p1u2a6v1q9ehad9euba8s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "493517061617-gl8a7mc5j49n6iqhlvec7fupr2jpe9es.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fotkimobile.app",
+                "app_store_id": "501456729"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

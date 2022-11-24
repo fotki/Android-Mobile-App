@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs xmlns:android="http://schemas.android.com/apk/res/android">
+    <tab
+        id="@+id/bb_menu_recents"
+        icon="@drawable/ic_public"
+        activeColor="#000000"
+        title="Public"
+        />
+    <tab
+        id="@+id/bb_menu_favorites"
+        icon="@drawable/ic_private"
+        activeColor="#000000"
+        title="Private"
+        />
+    <tab
+        id="@+id/bb_menu_upload"
+        icon="@drawable/ic_upload"
+        activeColor="#000000"
+        title="Upload"
+        />
+</tabs>

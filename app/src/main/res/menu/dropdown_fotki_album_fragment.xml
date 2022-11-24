@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_dropdown_fotki_album_fragment"
+
+    >
+    <item
+        android:id="@+id/upload_files"
+        android:orderInCategory="100"
+        android:title="@string/action_upload_files"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/upload_and_delete_files"
+        android:orderInCategory="100"
+        android:title="@string/action_upload_and_delete_files"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/udpate_album"
+        android:orderInCategory="100"
+        android:title="@string/action_update_album"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/reload_Album"
+        android:orderInCategory="100"
+        android:title="@string/action_reload_Folder"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/copy_toClipBoard"
+        android:orderInCategory="100"
+        android:title="@string/action_album_link"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/share_via"
+        android:orderInCategory="100"
+        android:title="@string/action_shareLinkVia"
+        app:showAsAction="never" />
+</menu>

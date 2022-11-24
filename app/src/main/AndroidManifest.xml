@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.tbox.fotki">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <protected-broadcast android:name="android.intent.action.MEDIA_MOUNTED" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:ignore="QueryAllPackagesPermission" />
+
+    <application
+        android:name=".FotkiApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:grantUriPermissions="true"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".refactoring.screens.slider.SliderActivity"
+            android:theme="@style/AppThemeMenuWhite.NoActionBar"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"/>
+
+        <activity
+            android:name=".refactoring.screens.MainActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".view.activities.SplashScreenActivity"
+            android:theme="@style/SplashThemeVer"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.activities.LoginActivity" />
+        <activity
+            android:name=".view.activities.fotki_tab_activity.FotkiTabActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.activities.log_activity.LogActivity"
+            android:label="@string/log_activity_label"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activities.backup_settings_activity.BackupSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.activities.ImageSliderActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" /> <!-- Prevent Activity restart on such events (specially on orientation change) -->
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity> <!-- done with facebook permissions in app -->
+        <service
+            android:name=".util.upload_files.UploadJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".util.sync_files.SyncJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".util.upload_files.UploadThreadService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".util.FcmRegistrationJobIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".util.sync_files.InsertJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service android:name=".refactoring.service.UploadFilesService"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.fotki.mobile.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <receiver
+            android:name=".util.receivers.AddPhotoReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.tbox.fotki.ADD_PHOTO" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".util.receivers.BootCompletedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".refactoring.screens.upload_files.UploadMultipleFilesService"
+            android:stopWithTask="false"
+            android:enabled="true"
+            android:exported="true" />
+    </application>
+
+</manifest>

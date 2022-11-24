@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.tbox.fotki.view.fragments.folder_fragment.FolderFragmentViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
+
+        <LinearLayout
+            android:id="@+id/folderName_withDecs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/folder_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:textAlignment="textStart"
+                android:textSize="@dimen/_12sdp"
+                android:maxLines="3"
+                android:scrollbars="vertical"
+                android:textStyle="bold"
+                mutableText="@{viewModel.folderName}"/>
+
+            <TextView
+                android:id="@+id/folder_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@null"
+                android:gravity="start"
+                android:textAlignment="textStart"
+                android:maxLines="3"
+                android:scrollbars="vertical"
+                android:textSize="@dimen/_10sdp"
+                mutableVisibility="@{viewModel.folderDescriptionVisibility}"
+                mutableText="@{viewModel.folderDescription}"/>
+
+        </LinearLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_below="@id/folderName_withDecs"
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <GridView
+                android:id="@+id/gridView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:clickable="true"
+                android:columnWidth="100dp"
+                android:drawSelectorOnTop="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:horizontalSpacing="3dp"
+                android:numColumns="3"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="3dp"
+                android:visibility="gone" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <RelativeLayout
+            android:id="@+id/internetNotAvailble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/_50sdp"
+            android:layout_marginRight="@dimen/_50sdp"
+            android:gravity="center"
+            android:visibility="gone"
+            mutableVisibility="@{viewModel.internetNoAvailableVisibility}">
+
+            <TextView
+                android:id="@+id/tv_noInternetAccess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/no_internet_access"
+                android:textSize="@dimen/_12sdp" />
+
+            <Button
+                android:layout_centerInParent="true"
+                android:id="@+id/btn_retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_retry"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                android:layout_below="@+id/tv_noInternetAccess"
+                android:layout_marginTop="@dimen/_5sdp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_emptyFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="gone"
+            mutableVisibility="@{viewModel.emptyFolderVisibility}">
+
+            <TextView
+                android:id="@+id/tv_albumEmpty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_Folder"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_albumEmpty"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:background="@null"
+                android:text="@string/Create_button"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBlueShade"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_create_folder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_create"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@null"
+                android:text="@string/Create_folder_button"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBlueShade"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

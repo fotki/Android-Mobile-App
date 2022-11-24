@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.tbox.fotki.view.activities.backup_settings_activity.BackupSettingsViewModel" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".view.activities.backup_settings_activity.BackupSettingsActivity">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/AppTheme.PopupOverlay">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingRight="48dp"
+                            android:orientation="horizontal">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/app_logo" />
+
+                                <TextView
+                                    android:id="@+id/tvVersion"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom|right"
+                                    android:text="1.1"
+                                    android:textSize="8sp" />
+
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/pbUploadSync"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="?android:progressBarStyle"
+                            android:layout_margin="8dp"
+                            android:layout_gravity="right"
+                            mutableBoolVisibility="@{viewModel.isSyncInProgress}"
+                            android:indeterminateDrawable="@drawable/custom_progress_bar"
+                            />
+                    </FrameLayout>
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <ScrollView
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context=".view.activities.backup_settings_activity.BackupSettingsActivity"
+                    tools:showIn="@layout/activity_backup_settings">
+
+                    <TextView
+                        android:id="@+id/tvStatusSync"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/started_syncing"
+                        android:paddingLeft="16dp"
+                        android:visibility="gone"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:background="@color/colorDarkGrey"
+                        app:mutableVisibility="@{viewModel.statusSyncVisibility}"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+
+                        />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swEnableBackupPhoto"
+                        style="@style/switcher_style"
+                        android:text="@string/enable_background"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvStatusSync" />
+
+                    <TextView
+                        android:id="@+id/tvStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        mutableText="@{viewModel.statusAccount}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/swEnableBackupPhoto" />
+
+                    <View
+                        android:id="@+id/vDiv5"
+                        style="@style/divider_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvStatus" />
+
+                    <TextView
+                        android:id="@+id/tvProgressTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:onClick="openLogActivity"
+                        android:text="@string/upload_progress"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvStopUpload"
+                        app:layout_constraintTop_toBottomOf="@id/vDiv5" />
+
+                    <TextView
+                        android:id="@+id/tvProgressMessage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:onClick="openLogActivity"
+                        android:textSize="12sp"
+                        app:mutableText="@{viewModel.progressMessage}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/tvStopUpload"
+                        app:layout_constraintTop_toBottomOf="@id/tvProgressTitle" />
+
+                    <TextView
+                        android:id="@+id/tvStopUpload"
+                        mutableText="@{viewModel.tvStopText}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="pause"
+                        android:padding="16dp"
+                        android:textAllCaps="true"
+                        app:layout_constraintBottom_toTopOf="@+id/vDiv1"
+                        app:layout_constraintLeft_toRightOf="@+id/tvProgressTitle"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/vDiv5" />
+
+                    <androidx.constraintlayout.widget.Group
+                        android:id="@+id/groupProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:constraint_referenced_ids="tvProgressTitle,tvProgressMessage" />
+
+                    <View
+                        android:id="@+id/vDiv1"
+                        style="@style/divider_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvProgressMessage" />
+
+                    <TextView
+                        android:id="@+id/tvFoldersTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="@string/folders_upload"
+                        android:onClick="onClickOpenFoldersDialog"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/vDiv1" />
+
+                    <TextView
+                        android:id="@+id/tvFoldersMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:textSize="12sp"
+                        mutableText="@{viewModel.backupFolderMessage}"
+                        android:onClick="onClickOpenFoldersDialog"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvFoldersTitle" />
+
+                    <View
+                        android:id="@+id/vDiv4"
+                        style="@style/divider_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvFoldersMessage" />
+
+                    <TextView
+                        android:id="@+id/tvFolderBackupTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:onClick="openBackgroundFolder"
+                        android:text="@string/upload_destination"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/vDiv4" />
+
+                    <TextView
+                        android:id="@+id/tvFolderBackupMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:textSize="12sp"
+                        android:onClick="openBackgroundFolder"
+                        android:text="@string/backup_folder"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvFolderBackupTitle" />
+
+                    <View
+                        android:id="@+id/vDiv2"
+                        style="@style/divider_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvFolderBackupMessage" />
+
+                    <TextView
+                        android:id="@+id/tvCellularDataTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="@string/cellular_mobile"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/vDiv2" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swCellularBackupPhoto"
+                        style="@style/switcher_style"
+                        android:text="Photos"
+                        mutableChecked="@{viewModel.isBackupPhoto}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCellularDataTitle" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swCellularBackupVideo"
+                        style="@style/switcher_style"
+                        android:text="Videos"
+                        mutableChecked="@{viewModel.isBackupVideo}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/swCellularBackupPhoto" />
+
+                    <View
+                        android:id="@+id/vDiv3"
+                        style="@style/divider_style"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/swCellularBackupVideo" />
+
+                    <TextView
+                        android:id="@+id/tvRoamingTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="@string/upload_works"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/vDiv3" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/swRoaming"
+                        style="@style/switcher_style"
+                        android:text="During roaming"
+                        mutableChecked="@{viewModel.isBackupRoaming}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvRoamingTitle" />
+
+                    <androidx.constraintlayout.widget.Group
+                        android:id="@+id/groupSettings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        mutableBoolVisibility="@{viewModel.isBackupEnable}"
+                        app:constraint_referenced_ids="tvFoldersMessage,tvStatus,tvCellularDataTitle,swCellularBackupVideo,tvRoamingTitle,swCellularBackupPhoto,swRoaming,vDiv2,tvFoldersTitle,vDiv1,vDiv3,tvFolderBackupTitle,tvFolderBackupMessage,vDiv4,vDiv5,tvProgressMessage,tvProgressTitle,tvStopUpload" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </ScrollView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                android:visibility="gone"
+                app:srcCompat="@android:drawable/ic_dialog_email" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:itemTextColor="@drawable/drawer_item_color"
+            app:menu="@menu/fotki_navigation_drawer">
+
+            <RelativeLayout
+                android:id="@+id/rlUploadingProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_150sdp"
+                mutableVisibility="@{viewModel.uploadingProgressVisibility}"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:id="@+id/pbUploadingProgress"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    app:mutableMax="@{viewModel.uploadingProgressMax}"
+                    app:mutableProgress="@{viewModel.uploadingProgressValue}"
+                    android:layout_height="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp" />
+
+                <TextView
+                    android:id="@+id/tvUploadingProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pbUploadingProgress"
+                    android:layout_centerHorizontal="true"
+                    mutableText="@{viewModel.uploadingProgressMessage}"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:text="@string/text_been_dummy_upload"
+                    android:textSize="@dimen/_10sdp" />
+            </RelativeLayout>
+
+        </com.google.android.material.navigation.NavigationView>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>

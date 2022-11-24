@@ -1,0 +1,24 @@
+package com.tbox.fotki.model.entities
+
+/**
+* Created by Junaid on 4/14/17.
+*/
+
+enum class ApiRequestType {
+    NEW_SESSION_API,
+    GET_ACCOUNT_INFO_API,
+    GET_ACCOUNT_TREE_API,
+    GET_ALBUM_CONTENT,
+    GET_ALBUM_ITEM_COUNT,
+    CREATE_FOLDER_API,
+    DELETE_MEDIA_API,
+    GET_FOLDER_CONTENT,
+    UPDATE_FOLDER,
+    CREATE_ALBUM_API,
+    UPDATE_ALBUM,
+    GOOGLE_SIGNIN_API,
+    GOOGLE_SIGIN_LOGIN_API,
+    FACEBOOK_SIGNIN_API,
+    FACEBOOK_SIGIN_LOGIN_API,
+    IS_EXISTS
+}

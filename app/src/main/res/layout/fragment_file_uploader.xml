@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.tbox.fotki.view.fragments.upload_file_fragment.UploadFileFragmentViewModel" />
+    </data>
+<LinearLayout
+    android:id="@+id/llRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground">
+
+    <FrameLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/app_logo"
+                />
+            <TextView
+                android:id="@+id/tvVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="8sp"
+                android:text="1.1"
+                android:layout_gravity="bottom|right"/>
+
+        </FrameLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/rel_noUploads"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        mutableVisibility="@{viewModel.uploadNotInProgressVisibility}">
+
+        <TextView
+            android:id="@+id/tv_albumEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/text_cannot_uploload_trough_folder"
+            android:textColor="@color/colorBlueShade"
+            android:textStyle="bold"
+            mutableText="@{viewModel.textDescription}"/>
+
+        <Button
+            android:id="@+id/btn_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_albumEmpty"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/action_upload_files"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            mutableVisibility="@{viewModel.btnUploadVisibility}"/>
+
+        <Button
+            android:id="@+id/btn_upload_and_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_upload"
+            android:layout_centerHorizontal="true"
+            android:text="@string/action_upload_and_delete_files"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            mutableVisibility="@{viewModel.btnUploadAndDelVisibility}" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rel_noInternet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        mutableVisibility="@{viewModel.noInternetVisibility}">
+
+        <TextView
+            android:id="@+id/tv_noInternetAccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/no_internet_access"
+            android:textColor="@color/colorBlueShade"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/bt_retry"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/pbLoading"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:textAlignment="center"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/pbLoading"
+                android:text="Try to restart loading..." />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvStatusNoInternet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="status"
+            mutableText="@{viewModel.textStatusNoInternet}"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rel_inProgress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        mutableVisibility="@{viewModel.uploadInProgressVisibility}">
+
+        <TextView
+            android:id="@+id/tvFile_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/_12sdp"
+            android:visibility="gone"
+            mutableText="@{viewModel.textFileUpload}"/>
+
+        <ImageView
+            android:id="@+id/drawee_item"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/tvCurrent_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_current_file"
+            android:textSize="@dimen/_10sdp" />
+
+        <ProgressBar
+            android:id="@+id/pbCurrent_file"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp" />
+
+        <TextView
+            android:id="@+id/tvUpload_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/text_current_percentage"
+            android:textSize="@dimen/_10sdp"
+            mutableText="@{viewModel.textCurrentUpload}"
+            />
+
+        <ProgressBar
+            android:id="@+id/pbAll_file"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/tv_totalUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/text_been_dummy_upload"
+            android:textSize="@dimen/_10sdp"
+            mutableText="@{viewModel.textTotalUpload}"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_cancel"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bt_pause"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            mutableText="@{viewModel.textStatus}"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+</layout>

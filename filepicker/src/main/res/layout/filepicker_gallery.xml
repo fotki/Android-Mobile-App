@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (c) 2018, Jaisel Rahman <jaiselrahman@gmail.com>.
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <!-- <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize" />
+    </com.google.android.material.appbar.AppBarLayout>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/file_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/llBottom"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:layout_centerInParent="true"
+        android:id="@+id/pbLoading"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading list of files..."
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/pbLoading"
+        app:layout_constraintStart_toStartOf="@id/pbLoading"
+        app:layout_constraintEnd_toEndOf="@id/pbLoading"/>
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/grLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="pbLoading, tvLoading"
+        />
+
+    <LinearLayout
+        android:id="@+id/llBottom"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary"
+        android:gravity="right"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:paddingRight="16dp"
+            android:gravity="right|center"
+            android:background="@android:color/transparent"
+            android:text="Send"/>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.fotki.filepicker">
+
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+<application>
+    <provider
+        android:name=".utils.FilePickerProvider"
+        android:authorities="${applicationId}.filepicker.provider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/com_jaiselrahman_filepicker_provider_paths" />
+    </provider>
+
+    <activity
+        android:name=".activity.FilePickerActivity"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:label="Select files"/>
+    <activity
+        android:name=".activity.DirSelectActivity"
+        android:theme="@style/AppTheme.NoActionBar" />
+</application>
+
+</manifest>

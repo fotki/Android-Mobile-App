@@ -1,0 +1,16 @@
+# Built application files
+build/
+/*/build/
+
+# Gradle generated files
+.gradle/
+
+# User-specific configurations
+.idea/
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+Thumbs.db
+
+

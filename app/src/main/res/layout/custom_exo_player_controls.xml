@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#CC000000"
+    android:gravity="center|bottom"
+    android:paddingTop="4dp" android:orientation="horizontal">
+        <ImageButton android:id="@id/exo_rew" style="@style/ExoMediaButton.Rewind" />
+        <ImageButton android:id="@id/exo_play" style="@style/ExoMediaButton.Play" />
+        <ImageButton android:id="@id/exo_pause" style="@style/ExoMediaButton.Pause" />
+        <ImageButton android:id="@id/exo_ffwd" style="@style/ExoMediaButton.FastForward" />
+</LinearLayout>
+
